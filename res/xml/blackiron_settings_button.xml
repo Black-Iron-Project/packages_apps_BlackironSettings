@@ -24,6 +24,12 @@
         android:summary="@string/power_menu_summary"
         android:fragment="com.android.settings.blackiron.buttons.PowerMenuActions" />
 
+    <org.blackiron.support.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_enable_power_menu"
+        android:title="@string/lockscreen_enable_power_menu_title"
+        android:summary="@string/lockscreen_enable_power_menu_summary"
+        android:defaultValue="true" />
+
     <Preference
         android:key="volume_key"
         android:fragment="com.blackiron.settings.fragments.VolumeRockerSettings"
