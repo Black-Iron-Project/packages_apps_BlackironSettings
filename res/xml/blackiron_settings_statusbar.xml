@@ -34,6 +34,12 @@
             <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
+    <org.blackiron.support.preferences.SecureSettingSwitchPreference
+            android:key="enable_location_privacy_indicator"
+            android:title="@string/location_privacy_title"
+            android:summary="@string/location_privacy_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
