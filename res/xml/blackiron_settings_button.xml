@@ -23,4 +23,10 @@
         android:fragment="com.blackiron.settings.fragments.VolumeRockerSettings"
         android:title="@string/volume_title" />
 
+        <Preference
+            android:key="power_menu"
+            android:title="@string/power_menu_title"
+            android:summary="@string/power_menu_summary"
+            android:fragment="com.android.settings.blackiron.buttons.PowerMenuActions" />
+
 </PreferenceScreen>
