@@ -32,4 +32,12 @@
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="@*android:bool/config_unplugTurnsOnScreen" />
 
+    <Preference
+        android:key="default_usb_configuration"
+        android:fragment="com.android.settings.connecteddevice.usb.UsbDefaultFragment"
+        android:icon="@drawable/ic_usb_24"
+        android:order="-245"
+        android:title="@string/usb_default_config_title"
+        android:summary="@string/usb_default_config_summary"/>
+
 </PreferenceScreen>
