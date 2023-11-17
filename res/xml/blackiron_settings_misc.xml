@@ -40,12 +40,18 @@
         android:title="@string/usb_default_config_title"
         android:summary="@string/usb_default_config_summary"/>
 
-    <com.android.settings.custom.preference.SystemSettingSwitchPreference
+    <PreferenceCategory
+        android:key="per-app_volume"
+        android:title="@string/per-app_volume_category" >
+
+    <org.blackiron.support.preferences.SystemSettingSwitchPreference
         android:key="show_app_volume"
         android:title="@string/app_volume_title"
         android:summary="@string/app_volume_summary"
         android:defaultValue="false"
         android:order="-5"/>
+
+</PreferenceCategory>
 
     <PreferenceCategory
         android:key="reticker"
@@ -61,5 +67,6 @@
         android:title="@string/reticker_colored_title"
         android:summary="@string/reticker_colored_summary"
         android:dependency="reticker_status" />
+</PreferenceCategory>
 
 </PreferenceScreen>
