@@ -93,6 +93,13 @@
             android:entryValues="@array/status_bar_battery_percentage_values"
             android:defaultValue="0" />
 
+
+    <org.blackiron.support.preferences.SystemSettingSwitchPreference
+        android:key="bluetooth_show_battery"
+        android:title="@string/bluetooth_battery_title"
+        android:summary="@string/bluetooth_battery_summary"
+        android:defaultValue="true"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
