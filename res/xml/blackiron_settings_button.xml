@@ -19,6 +19,12 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <Preference
+        android:key="power_menu"
+        android:title="@string/power_menu_title"
+        android:summary="@string/power_menu_summary"
+        android:fragment="com.android.settings.blackiron.buttons.PowerMenuActions" />
+
+    <Preference
         android:key="volume_key"
         android:fragment="com.blackiron.settings.fragments.VolumeRockerSettings"
         android:title="@string/volume_title" />
