@@ -24,6 +24,12 @@
         android:summary="@string/disable_qs_summary"
         android:defaultValue="false" />
 
+    <org.blackiron.support.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
+
     <Preference
         android:key="gesture_screen_off_udfps_input_summary"
         android:title="@string/ambient_display_screen_off_udfps_title"
