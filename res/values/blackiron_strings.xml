@@ -129,6 +129,7 @@
     <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string> 
     <string name="status_bar_battery_text_charging_title">Battery percentage when charging</string>
     <string name="status_bar_battery_text_charging_summary">Always display battery percentage when charging</string>
+    <string name="status_bar_battery_style_summary">StatusBar And QS Battery Styles</string>
 
     <!-- Battery estimate -->
     <string name="battery_estimate_title">Battery estimate</string>
