@@ -138,4 +138,7 @@
     <!-- QS battery -->
     <string name="qs_battery_category_title">Qs Battery customizations</string>
     <string name="qs_use_status_bar_battery_style">Follow status bar style</string>
+
+    <!-- In-call feedback -->
+    <string name="incall_feeedback_vibrate_title">Vibrate to indicate call status</string>
 </resources>
