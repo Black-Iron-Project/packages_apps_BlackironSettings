@@ -36,6 +36,7 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="advanced">Advanced</string>
+    <string name="default_string">Default</string>
 
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
