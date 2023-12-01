@@ -318,6 +318,7 @@
     <string name="lockscreen_media_blur_title">Media art blur level</string>
 
     <!-- Status bar - Clock -->
+    <string name="clock_category">Statusbar Clock Costumization</string>
     <string name="status_bar_clock_title">Clock &amp; date</string>
     <string name="status_bar_clock_summary">Customize clock &amp; date</string>
     <string name="status_bar_clock_seconds_title">Clock seconds</string>
