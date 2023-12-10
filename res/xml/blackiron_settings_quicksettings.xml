@@ -70,7 +70,6 @@
 
         <org.blackiron.support.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_label_hide"
-            android:icon="@drawable/ic_text"
             android:title="@string/qs_tile_label_hide_title"
             android:summary="@string/qs_tile_label_hide_summary"
             android:defaultValue="false" />
@@ -87,7 +86,6 @@
 
         <org.blackiron.support.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_vertical_layout"
-            android:icon="@drawable/ic_qs_tile"
             android:title="@string/qs_tile_vertical_layout_title"
             android:summary="@string/qs_tile_vertical_layout_summary"
             android:defaultValue="false" />
