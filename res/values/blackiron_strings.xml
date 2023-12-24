@@ -461,10 +461,8 @@
     <string name="lockscreen_weather_title">Weather condition</string>
     <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
     <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
-    <string name="lockscreen_weather_location_title">Current location</string>
+    <string name="lockscreen_weather_location_title">Weather location</string>
     <string name="lockscreen_weather_location_summary">Display current weather location</string>
-    <string name="lockscreen_weather_text_title">Current condition</string>
-    <string name="lockscreen_weather_text_summary">Display current weather condition summary</string>
 
     <string name="torch_long_press_power_gesture_title">Long press for torch</string>
     <string name="torch_long_press_power_gesture_desc">Activate the torch by long pressing the power button while the display is off</string>
