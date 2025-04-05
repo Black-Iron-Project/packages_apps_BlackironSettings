@@ -54,6 +54,8 @@ public class Navigation extends SettingsPreferenceFragment {
         Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.NAVBAR_INVERSE_LAYOUT, 0, UserHandle.USER_CURRENT);
         Settings.Secure.putIntForUser(resolver,
+                Settings.Secure.NAVBAR_LAYOUT_MODE, 0, UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.BACK_GESTURE_ARROW, 1, UserHandle.USER_CURRENT);
         Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.BACK_GESTURE_HAPTIC, 1, UserHandle.USER_CURRENT);
