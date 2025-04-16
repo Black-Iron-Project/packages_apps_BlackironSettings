@@ -15,14 +15,13 @@
  */
 package com.blackiron.settings.utils;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.IActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import com.android.settings.R;
+import com.android.internal.util.crdroid.Utils;
 
 public class SystemUtils {
 
@@ -32,28 +31,22 @@ public class SystemUtils {
                 .setMessage(R.string.systemui_restart_message)
                 .setPositiveButton(R.string.systemui_restart_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        new AsyncTask<Void, Void, Void>() {
-                            @Override
-                            protected Void doInBackground(Void... params) {
-                                try {
-                                    ActivityManager am =
-                                            (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-                                    IActivityManager ams = ActivityManager.getService();
-                                    for (ActivityManager.RunningAppProcessInfo app : am.getRunningAppProcesses()) {
-                                        if ("com.android.systemui".equals(app.processName)) {
-                                            ams.killApplicationProcess(app.processName, app.uid);
-                                            break;
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                                return null;
-                            }
-                        }.execute();
+                        restartSystemUI(context);
                     }
                 })
                 .setNegativeButton(R.string.systemui_restart_not_now, null)
                 .show();
+    }
+
+    public static void restartSystemUI(Context context) {
+        Toast.makeText(context, R.string.systemui_restart_process,
+                Toast.LENGTH_LONG).show();
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                Utils.restartSystemUI();
+                return null;
+            }
+        }.execute();
     }
 }
