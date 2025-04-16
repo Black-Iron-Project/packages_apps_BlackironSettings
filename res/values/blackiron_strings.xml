@@ -1333,6 +1333,7 @@
      <string name="systemui_restart_message">For changes to take effect, a SystemUI restart is required. Restart SystemUI now?</string>
      <string name="systemui_restart_yes">Yes</string>
      <string name="systemui_restart_not_now">Not now</string>
+    <string name="restart_systemui">Restart SystemUI for change to take effect!</string>
 
     <!-- Pocket Mode -->
     <string name="lock_screen_miscellaneous_category">Miscellaneous</string>
