@@ -76,6 +76,7 @@
     <string name="notification_color">Notification color</string>
     <string name="wallpaper_color">Wallpaper color</string>
     <string name="custom_color">Custom color</string>
+    <string name="default_value">Default</string>
 
     <!-- Changelog -->
     <string name="changelog_blackiron_title">Current changelog</string>
