@@ -1335,6 +1335,7 @@
      <string name="systemui_restart_yes">Yes</string>
      <string name="systemui_restart_not_now">Not now</string>
     <string name="restart_systemui">Restart SystemUI for change to take effect!</string>
+     <string name="systemui_restart_process">Restarting SystemUI to apply changes...</string>
 
     <!-- Pocket Mode -->
     <string name="lock_screen_miscellaneous_category">Miscellaneous</string>
