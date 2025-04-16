@@ -1566,4 +1566,13 @@
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
+
+    <!-- Notification / Power Menu Styles -->
+    <string name="notification_style_title">Notification style</string>
+    <string name="powermenu_style_title">Power menu style</string>
+    <string name="custom_style_cyberpunk">Cyberpunk</string>
+    <string name="custom_style_duoline">Duoline</string>
+    <string name="custom_style_fluid">Fluid (Transparent)</string>
+    <string name="custom_style_ios">IOS</string>
+    <string name="custom_style_layers">Layers</string>
 </resources>
