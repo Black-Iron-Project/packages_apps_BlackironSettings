@@ -26,7 +26,6 @@ import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -43,6 +42,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.blackiron.udfps.UdfpsUtils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
+
+import com.blackiron.settings.utils.SystemUtils;
 
 import java.util.List;
 
@@ -112,19 +113,15 @@ public class LockScreen extends SettingsPreferenceFragment
         if (preference == mSmartspace) {
             mSmartspace.setChecked((Boolean)newValue);
             updateWeatherSettings();
-            showRestartToast();
+            SystemUtils.showSystemUiRestartDialog(getContext());
             return true;
         } else if (preference == mWeather) {
             mWeather.setChecked((Boolean)newValue);
-            showRestartToast();
+            SystemUtils.showSystemUiRestartDialog(getContext());
             return true;
         }
 
         return false;
-    }
-
-    private void showRestartToast() {
-        Toast.makeText(getContext(), R.string.restart_systemui, Toast.LENGTH_LONG).show();
     }
 
     public static void reset(Context mContext) {
