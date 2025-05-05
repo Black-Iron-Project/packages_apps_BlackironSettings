@@ -42,6 +42,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.internal.util.blackiron.ThemeUtils;
+import com.blackiron.settings.utils.SystemUtils;
 
 import java.util.List;
 
@@ -128,6 +129,7 @@ public class LockClockFontsPicker extends SettingsPreferenceFragment {
                     updateActivatedStatus(pkg, true);
                     mSelectedPkg = pkg;
                     mThemeUtils.setOverlayEnabled(mCategory, mSelectedPkg, "android");
+                    SystemUtils.restartSystemUI(context);
                 }
             });
         }
