@@ -1233,9 +1233,20 @@
     <string name="always_on_display_schedule_mixed_sunset">Turns on from sunset till a time</string>
     <string name="always_on_display_schedule_mixed_sunrise">Turns on from a time till sunrise</string>
 
-    <!-- IME Space -->
+
+    <!-- Navigation bar IME space -->
     <string name="navigation_bar_ime_space_title">IME space</string>
+    <string name="navigation_bar_ime_space_narrow">Narrow</string>
+    <string name="navigation_bar_ime_space_hidden">Hidden</string>
     <string name="navigation_bar_ime_space_summary">Add space below keyboard when navigation hint is disabled</string>
+
+    <!-- Navigation bar taskbar -->
+    <string name="navigation_bar_enable_taskbar_title">Taskbar</string>
+    <string name="navigation_bar_enable_taskbar_summary">Show taskbar with selected navigation mode</string>
+
+    <!-- IME button space -->
+    <string name="show_ime_space_title">Show IME button space</string>
+    <string name="show_ime_space_summary">Enable the input method quick switch feature to switch input methods or hide the on-screen keyboard from the feature bar at the bottom of the screen when typing</string>
 
     <!-- QS Bluetooth Dialog -->
     <string name="qs_bt_show_dialog_title">Bluetooth tile dialog</string>
@@ -1331,10 +1342,6 @@
     <!-- Cycle through ringer modes gesture -->
     <string name="prevent_ringing_option_cycle">Cycle through modes</string>
     <string name="prevent_ringing_option_cycle_summary">On (cycle through modes)</string>
-
-    <!-- Navigation bar taskbar -->
-    <string name="navigation_bar_enable_taskbar_title">Taskbar</string>
-    <string name="navigation_bar_enable_taskbar_summary">Show taskbar with selected navigation mode</string>
 
      <!-- SystemUI restart dialog -->
      <string name="systemui_restart_title">SystemUI restart required</string>
@@ -1608,4 +1615,5 @@
 
     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance."
     </string>
+
 </resources>
