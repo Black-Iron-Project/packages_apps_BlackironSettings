@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2023 BlackIron Project
+     Copyright (C) 2016-2023 Blackiron Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -25,32 +25,6 @@
         android:title="@string/doze_display_title"
         android:summary="@string/doze_display_summary"
         android:fragment="com.blackiron.settings.fragments.ui.DozeSettings" />
-
-    <!-- Ambient Display -->
-    <Preference
-        android:key="bootanimation_fragment"
-        android:title="@string/boot_animation_styles_title"
-            android:summary="@string/boot_animation_styles_summary"
-            android:fragment="com.blackiron.settings.fragments.ui.BootAnimationSettings" />
-
-    <!-- Wallpaper Settings -->
-    <Preference
-        android:key="wallpaper_settings"
-        android:title="@string/wallpaper_settings_title"
-        android:summary="@string/wallpaper_settings_summary"
-        android:fragment="com.blackiron.settings.fragments.ui.Wallpaper" />
-
-    <PreferenceCategory
-        android:key="themes_monet_category"
-        android:title="@string/themes_monet_category">
-
-        <!-- Monet engine -->
-        <Preference
-            android:key="monet_engine"
-            android:title="@string/themes_monet_title"
-            android:summary="@string/themes_monet_summary"
-            android:fragment="com.blackiron.settings.fragments.ui.MonetSettings" />
-    </PreferenceCategory>
 
     <!-- Charging animation -->
     <com.blackiron.settings.preferences.SystemSettingSwitchPreference
@@ -85,30 +59,19 @@
         android:summary="@string/smart_pixels_summary" 
         android:fragment="com.blackiron.settings.fragments.ui.SmartPixels" />
 
+    <!-- Monet Theme Engine -->
+    <Preference
+        android:key="monet_engine"
+        android:title="@string/monet_title"
+        android:summary="@string/monet_summary"
+        android:fragment="com.blackiron.settings.fragments.ui.MonetSettings" />
+
     <!-- Navbar Style -->
     <Preference
         android:key="android.theme.customization.navbar"
         android:title="@string/theme_customization_navbar_title"
         android:summary="@string/theme_customization_navbar_summary"
         android:fragment="com.blackiron.settings.fragments.ui.NavbarStyles"/>
-
-    <!-- Notification Style -->
-    <com.blackiron.settings.preferences.SystemSettingListPreference
-        android:key="notification_style"
-        android:title="@string/notification_style_title"
-        android:entries="@array/custom_style_entries"
-        android:entryValues="@array/custom_style_values"
-        android:summary="%s"
-        android:defaultValue="0" />
-
-    <!-- Powermenu Style -->
-    <com.blackiron.settings.preferences.SystemSettingListPreference
-        android:key="powermenu_style"
-        android:title="@string/powermenu_style_title"
-        android:entries="@array/custom_style_entries"
-        android:entryValues="@array/custom_style_values"
-        android:summary="%s"
-        android:defaultValue="0" />
 
     <!-- Font style -->
     <Preference
