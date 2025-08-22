@@ -20,49 +20,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/spoofing_title">
 
-        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.all"
-            android:title="@string/all_props_title"
-            android:summary="@string/all_props_summary"
-            android:defaultValue="true"
-            app:position="top" />
+    <PreferenceCategory
+        android:key="spoofing_system_wide_category"
+        android:title="@string/spoofing_system_wide_category">
 
-        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.google"
-            android:title="@string/google_spoof_title"
-            android:summary="@string/google_spoof_summary"
-            android:defaultValue="true" />
-
-        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.features.tensor"
-            android:title="@string/tensor_spoof_title"
-            android:summary="@string/tensor_spoof_summary"
-            android:defaultValue="false" />
-
-        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.gameprops.enabled"
-            android:title="@string/gameprops_title"
-            android:summary="@string/gameprops_summary"
-            android:defaultValue="false" />
-
-        <Preference
-            android:key="game_props_json_file_preference"
-            android:title="@string/gameprops_load_json_title"
-            android:dependency="persist.sys.gameprops.enabled"
-            android:summary="@string/gameprops_load_json_summary" />
+        <!-- Keybox Data -->
+        <com.blackiron.settings.preferences.KeyboxDataPreference
+            android:key="keybox_data_setting"
+            android:title="@string/keybox_data_title"
+            android:summary="@string/keybox_data_summary"
+            android:defaultValue=""/>
 
         <!-- GMS spoof -->
         <com.blackiron.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.gms"
             android:title="@string/gms_spoof_title"
             android:summary="@string/gms_spoof_summary"
-            android:defaultValue="true"/>
+            android:defaultValue="false" />
 
         <Preference
             android:key="show_pif_properties"
             android:title="@string/show_pif_properties_title"
             android:summary="@string/show_pif_properties_summary"
-            android:dependency="persist.sys.pixelprops.gms"/>
+            android:dependency="persist.sys.pixelprops.gms" />
 
         <Preference
             android:key="update_pif_json"
@@ -74,30 +54,68 @@
             android:key="pif_json_file_preference"
             android:title="@string/pif_spoofing_title"
             android:summary="@string/pif_spoofing_summary"
-            android:dependency="persist.sys.pixelprops.gms"/>
+            android:dependency="persist.sys.pixelprops.gms" />
 
-        <!-- Unlimited google photos storage -->
+        <!-- Pixel props -->
         <com.blackiron.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.gphotos"
-            android:title="@string/use_photos_spoof_title"
-            android:summary="@string/use_photos_spoof_summary"
+            android:key="persist.sys.pixelprops"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
             android:defaultValue="true" />
 
-        <Preference
-        android:key="app_spoof_selector"
-        android:title="@string/app_spoof_selector_title"
-        android:summary="@string/app_spoof_selector_summary"
-        app:position="bottom" />
+        <!-- Tensor features -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.features.tensor"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
+            android:defaultValue="false" />
 
-<!--        <PreferenceCategory
-            android:title="@string/help_section_title"
-            android:key="help_section">
+        <!-- Encryption -->
+        <com.blackiron.settings.preferences.GlobalSettingSwitchPreference
+            android:key="spoofing_storage_encryption"
+            android:title="@string/spoofing_storage_encryption_title"
+            android:summary="@string/spoofing_storage_encryption_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
 
-       <Preference
-            android:key="wiki_link"
-            android:title="@string/help_footer_title"
-            android:summary="@string/help_footer_summary"
-            app:position="solo"/>
-    </PreferenceCategory>  -->
+    <PreferenceCategory
+        android:key="spoofing_app_specific_category"
+        android:title="@string/spoofing_app_specific_category">
+
+        <!-- Google App -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.qsb"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />
+
+        <!-- Play Store -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.vending"
+            android:title="@string/spoofing_vending_title"
+            android:summary="@string/spoofing_vending_summary"
+            android:defaultValue="false" />
+
+        <!-- Google Photos -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
+
+        <!-- Games FPS -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.games"
+            android:title="@string/gameprops_title"
+            android:summary="@string/gameprops_summary"
+            android:defaultValue="true" />
+
+        <!-- Snapchat -->
+        <com.blackiron.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.snap"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
