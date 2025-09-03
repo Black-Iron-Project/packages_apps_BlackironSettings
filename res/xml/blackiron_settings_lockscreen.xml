@@ -60,6 +60,20 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="lockscreen_widgets"
+        android:title="@string/lockscreen_widgets_title">
+
+        <!-- Lockscreen Widgets -->
+        <Preference
+            android:key="lockscreen_widgets"
+            android:title="@string/lockscreen_widgets_title"
+            android:summary="@string/lockscreen_widgets_enabled_summary"
+            android:fragment="com.blackiron.settings.fragments.lockscreen.LockScreenWidgets"
+            lineage:position="solo"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="lockscreen_interface_category"
         android:title="@string/lockscreen_interface_category">
 
