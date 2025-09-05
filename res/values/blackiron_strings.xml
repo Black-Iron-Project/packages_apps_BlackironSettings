@@ -1715,6 +1715,8 @@
     <!-- Lockscreen Clock Revamp -->
     <string name="ls_clock_custom_font_not_supported">Selected clock does not support custom fonts</string>
 
+    <string name="ls_ui_title">Clock &amp; Widget</string>
+
     <!-- Custom Clock Style -->
     <string name="lockscreen_clock_category_title">Lockscreen clock</string>
     <string name="lockscreen_clock_category_summary">Configure lockscreen clock styles</string>

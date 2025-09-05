@@ -21,26 +21,14 @@
 
     <PreferenceCategory
         android:key="lockscreen_clock_category"
-        android:title="@string/qs_clock_title">
+        android:title="@string/ls_ui_title">
 
-        <!-- Lockscreen Clock Font style -->
-        <Preference
-            android:key="android.theme.customization.lockscreen_clock_font"
-            android:title="@string/theme_customization_lock_clock_title"
-            android:summary="@string/theme_customization_lock_clock_summary"
-            android:fragment="com.blackiron.settings.fragments.lockscreen.LockClockFontsPicker"/>
-
+        <!-- Lockscreen Clock Custom & Font style -->
         <Preference
             android:key="lock_clock_fonts"
             android:title="@string/theme_customization_lock_clock_title2"
             android:summary="@string/theme_customization_lock_clock_summary2"
             android:fragment="com.blackiron.settings.fragments.lockscreen.LockClockFontsPickerPreview" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="lockscreen_widgets"
-        android:title="@string/lockscreen_widgets_title">
 
         <!-- Lockscreen Widgets -->
         <Preference
