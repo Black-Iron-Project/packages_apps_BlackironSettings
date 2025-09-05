@@ -47,11 +47,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.blackiron.settings.utils.SystemUtils;
+
 
 import com.android.internal.util.blackiron.ThemeUtils;
 import com.blackiron.settings.fragments.ui.fonts.FontArrayAdapter;
 import com.blackiron.settings.fragments.ui.fonts.FontManager;
+import com.blackiron.settings.utils.SystemRestartUtils;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.List;
@@ -295,13 +296,13 @@ public class LockClockFontsPickerPreview extends SettingsPreferenceFragment {
                 @Override
                 public void run() {
                     try {
-                        SystemUtils.showSystemUiRestartDialog(getContext());
+                        SystemRestartUtils.restartSystemUI(appContext);
                         showSuccessMessage();
 
                     } catch (Exception e) {
                         if (isAdded() && getContext() != null && getActivity() != null && !getActivity().isFinishing()) {
                             try {
-                                SystemUtils.showSystemUiRestartDialog(getContext());
+                                SystemRestartUtils.restartSystemUI(getContext());
                                 showSuccessMessage();
                             } catch (Exception ex) {
                                 showFailureMessage();
