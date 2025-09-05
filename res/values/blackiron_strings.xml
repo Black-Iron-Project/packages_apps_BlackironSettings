@@ -1726,4 +1726,8 @@
     <string name="font_preview_text">The quick brown\nfox jumps over the\nlazy dog\n\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\nabcdefghijkl\nmnopqrstuvwxyz\n1234567890</string>
     <string name="apply_button_text">Apply</string>
     <string name="font_picker_select_font">Select font</string>
+
+    <!-- Now Bar -->
+    <string name="keyguard_now_bar_enabled_title">Now Bar</string>
+    <string name="keyguard_now_bar_enabled_summary">Enable now bar lockscreen widgets</string>
 </resources>
