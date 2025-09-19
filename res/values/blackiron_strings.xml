@@ -1757,4 +1757,8 @@
     <string name="qs_refactor_title">QuickSettings Refactor</string>
     <string name="qs_refactor_summary">Some features will not work on the new QS</string>
     <string name="qs_main_category">QS Refactor</string>
+
+    <!-- Split Shade -->
+    <string name="qs_split_shade_enabled_title">Better Landscape QS (EXPERIMENTAL)</string>
+    <string name="qs_split_shade_enabled_summary">Enable new experimental split shade quicksettings,\nbreaks landscape headsup notifications</string>
 </resources>
