@@ -1736,4 +1736,9 @@
     <string name="notification_corner_radius_summary">Adjust the corner radius of notifications</string>
     <string name="now_bar_height_title">Nowbar height</string>
     <string name="now_bar_height_summary">Adjust the height of the Nowbar</string>
+
+    <!-- QuickSettings Refactor -->
+    <string name="qs_refactor_title">QuickSettings Refactor</string>
+    <string name="qs_refactor_summary">Some features will not work on the new QS</string>
+    <string name="qs_main_category">QS Refactor</string>
 </resources>

@@ -39,6 +39,7 @@ import com.blackiron.settings.fragments.quicksettings.QsHeaderImageSettings;
 import com.blackiron.settings.preferences.CustomSeekBarPreference;
 import com.blackiron.settings.preferences.SystemSettingSwitchPreference;
 import com.blackiron.settings.utils.SystemUtils;
+import com.blackiron.settings.preferences.SecureSettingSwitchPreference;
 
 import lineageos.providers.LineageSettings;
 
@@ -58,6 +59,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
     private static final String KEY_QS_WIDGETS_ENABLED  = "qs_widgets_enabled";
+    private static final String KEY_QS_REFACTOR_ENABLED = "qs_refactor_enabled";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -66,6 +68,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mQsUI;
     private ListPreference mQsPanelStyle;
     private SystemSettingSwitchPreference mQsWidgetsPref;
+    private SecureSettingSwitchPreference mQsRefactorEnabled;
 
     private static ThemeUtils mThemeUtils;
 
@@ -91,6 +94,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         mBrightnessSliderHaptic = findPreference(KEY_BRIGHTNESS_SLIDER_HAPTIC);
         mBrightnessSliderHaptic.setEnabled(showSlider);
+
+        mQsRefactorEnabled = (SecureSettingSwitchPreference) findPreference(KEY_QS_REFACTOR_ENABLED);
+        mQsRefactorEnabled.setOnPreferenceChangeListener(this);
 
         mShowAutoBrightness = findPreference(KEY_SHOW_AUTO_BRIGHTNESS);
         boolean automaticAvailable = mContext.getResources().getBoolean(
@@ -130,6 +136,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     Settings.System.QS_TILE_UI_STYLE, value, UserHandle.USER_CURRENT);
             updateQsStyle(getContext());
             checkQSOverlays(getContext());
+            return true;
+        } else if (preference == mQsRefactorEnabled) {
+            // QS Refactor setting changed - restart SystemUI
+            SystemRestartUtils.restartSystemUI(getContext());
             return true;
         } else if (preference == mQsPanelStyle) {
             int value = Integer.parseInt((String) newValue);
