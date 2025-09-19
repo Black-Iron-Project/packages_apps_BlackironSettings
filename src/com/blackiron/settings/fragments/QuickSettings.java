@@ -25,7 +25,6 @@ import android.provider.Settings;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -37,15 +36,12 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.blackiron.settings.fragments.quicksettings.QsHeaderImageSettings;
-import com.blackiron.settings.preferences.CustomSeekBarPreference;
-import com.blackiron.settings.preferences.SystemSettingSwitchPreference;
-import com.blackiron.settings.utils.SystemUtils;
 import com.blackiron.settings.preferences.SecureSettingSwitchPreference;
+import com.blackiron.settings.preferences.SystemSettingSwitchPreference;
+import com.blackiron.settings.utils.SystemRestartUtils;
+import com.blackiron.settings.utils.SystemUtils;
 
 import lineageos.providers.LineageSettings;
-
-import java.util.List;
-import java.util.ArrayList;
 
 @SearchIndexable
 public class QuickSettings extends SettingsPreferenceFragment implements
@@ -61,6 +57,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_PANEL_STYLE  = "qs_panel_style";
     private static final String KEY_QS_WIDGETS_ENABLED  = "qs_widgets_enabled";
     private static final String KEY_QS_REFACTOR_ENABLED = "qs_refactor_enabled";
+    private static final String KEY_QS_SPLIT_SHADE_ENABLED = "qs_split_shade_enabled";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -89,39 +86,58 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
-        mShowBrightnessSlider.setOnPreferenceChangeListener(this);
+        if (mShowBrightnessSlider != null) {
+            mShowBrightnessSlider.setOnPreferenceChangeListener(this);
+        }
+
         boolean showSlider = LineageSettings.Secure.getIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT) > 0;
 
         mBrightnessSliderPosition = findPreference(KEY_BRIGHTNESS_SLIDER_POSITION);
-        mBrightnessSliderPosition.setEnabled(showSlider);
+        if (mBrightnessSliderPosition != null) {
+            mBrightnessSliderPosition.setEnabled(showSlider);
+        }
 
         mBrightnessSliderHaptic = findPreference(KEY_BRIGHTNESS_SLIDER_HAPTIC);
-        mBrightnessSliderHaptic.setEnabled(showSlider);
+        if (mBrightnessSliderHaptic != null) {
+            mBrightnessSliderHaptic.setEnabled(showSlider);
+        }
 
         mQsRefactorEnabled = (SecureSettingSwitchPreference) findPreference(KEY_QS_REFACTOR_ENABLED);
-        mQsRefactorEnabled.setOnPreferenceChangeListener(this);
+        if (mQsRefactorEnabled != null) {
+            mQsRefactorEnabled.setOnPreferenceChangeListener(this);
+        }
 
         mShowAutoBrightness = findPreference(KEY_SHOW_AUTO_BRIGHTNESS);
         boolean automaticAvailable = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_automatic_brightness_available);
-        if (automaticAvailable) {
-            mShowAutoBrightness.setEnabled(showSlider);
-        } else {
-            prefScreen.removePreference(mShowAutoBrightness);
+        if (mShowAutoBrightness != null) {
+            if (automaticAvailable) {
+                mShowAutoBrightness.setEnabled(showSlider);
+            } else {
+                prefScreen.removePreference(mShowAutoBrightness);
+            }
         }
 
         mQsUI = (ListPreference) findPreference(KEY_QS_UI_STYLE);
-        mQsUI.setOnPreferenceChangeListener(this);
+        if (mQsUI != null) {
+            mQsUI.setOnPreferenceChangeListener(this);
+        }
 
         mQsPanelStyle = (ListPreference) findPreference(KEY_QS_PANEL_STYLE);
-        mQsPanelStyle.setOnPreferenceChangeListener(this);
+        if (mQsPanelStyle != null) {
+            mQsPanelStyle.setOnPreferenceChangeListener(this);
+        }
 
-        mSplitShadePref = (Preference) findPreference("qs_split_shade_enabled");
-        mSplitShadePref.setOnPreferenceChangeListener(this);
+        mSplitShadePref = findPreference(KEY_QS_SPLIT_SHADE_ENABLED);
+        if (mSplitShadePref != null) {
+            mSplitShadePref.setOnPreferenceChangeListener(this);
+        }
 
         mQsWidgetsPref = findPreference(KEY_QS_WIDGETS_ENABLED);
-        mQsWidgetsPref.setOnPreferenceChangeListener(this);
+        if (mQsWidgetsPref != null) {
+            mQsWidgetsPref.setOnPreferenceChangeListener(this);
+        }
 
         checkQSOverlays(mContext);
     }
@@ -132,10 +148,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         if (preference == mShowBrightnessSlider) {
             int value = Integer.parseInt((String) newValue);
-            mBrightnessSliderPosition.setEnabled(value > 0);
-            mBrightnessSliderHaptic.setEnabled(value > 0);
-            if (mShowAutoBrightness != null)
-                mShowAutoBrightness.setEnabled(value > 0);
+            if (mBrightnessSliderPosition != null) mBrightnessSliderPosition.setEnabled(value > 0);
+            if (mBrightnessSliderHaptic != null) mBrightnessSliderHaptic.setEnabled(value > 0);
+            if (mShowAutoBrightness != null) mShowAutoBrightness.setEnabled(value > 0);
             return true;
         } else if (preference == mQsUI) {
             int value = Integer.parseInt((String) newValue);
@@ -145,7 +160,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             checkQSOverlays(getContext());
             return true;
         } else if (preference == mQsRefactorEnabled) {
-            // QS Refactor setting changed - restart SystemUI
             SystemRestartUtils.restartSystemUI(getContext());
             return true;
         } else if (preference == mQsPanelStyle) {
@@ -161,7 +175,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mSplitShadePref) {
             int value = (boolean) newValue ? 1 : 0;
             Settings.System.putIntForUser(resolver,
-                   "qs_split_shade_enabled", value, UserHandle.USER_CURRENT);
+                    KEY_QS_SPLIT_SHADE_ENABLED, value, UserHandle.USER_CURRENT);
             updateSplitShadeEnabled(getActivity());
             return true;
         }
@@ -172,8 +186,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = context.getContentResolver();
         boolean splitShadeEnabled = Settings.System.getIntForUser(
                 resolver,
-                "qs_split_shade_enabled" , 0, UserHandle.USER_CURRENT) != 0;
-	    String splitShadeStyleCategory = "android.theme.customization.better_qs";
+                KEY_QS_SPLIT_SHADE_ENABLED , 0, UserHandle.USER_CURRENT) != 0;
+        String splitShadeStyleCategory = "android.theme.customization.better_qs";
         String overlayThemeTarget  = "com.android.systemui";
         String overlayThemePackage  = "com.android.system.qs.ui.better_qs";
         if (mThemeUtils == null) {
@@ -195,12 +209,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_BT_SHOW_DIALOG, 1, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.QS_SHOW_BATTERY_PERCENT, 2, UserHandle.USER_CURRENT);
-//        Settings.System.putIntForUser(resolver,
-  //              Settings.System.NOTIFICATION_MATERIAL_DISMISS, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.QS_TRANSPARENCY, 100, UserHandle.USER_CURRENT);
-//                Settings.System.QS_FOOTER_TRANSPARENCY, 100, UserHandle.USER_CURRENT);
-//        Settings.System.putIntForUser(resolver,
         Settings.System.putIntForUser(resolver,
                 Settings.System.QS_TILE_UI_STYLE, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
@@ -238,20 +248,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         boolean isA11Style = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_TILE_UI_STYLE , 0, UserHandle.USER_CURRENT) != 0;
 
-	    String qsUIStyleCategory = "android.theme.customization.qs_ui";
+        String qsUIStyleCategory = "android.theme.customization.qs_ui";
         String overlayThemeTarget  = "com.android.systemui";
         String overlayThemePackage  = "com.android.system.qs.ui.A11";
 
         if (mThemeUtils == null) {
-            mThemeUtils = new ThemeUtils(context);
+            mThemeUtils = ThemeUtils.getInstance(context);
         }
 
-	    // reset all overlays before applying
         mThemeUtils.setOverlayEnabled(qsUIStyleCategory, overlayThemeTarget, overlayThemeTarget);
 
-	    if (isA11Style) {
+        if (isA11Style) {
             mThemeUtils.setOverlayEnabled(qsUIStyleCategory, overlayThemePackage, overlayThemeTarget);
-	    }
+        }
     }
 
     private static void updateQsPanelStyle(Context context) {
@@ -295,15 +304,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
 
         if (mThemeUtils == null) {
-            mThemeUtils = new ThemeUtils(context);
+            mThemeUtils = ThemeUtils.getInstance(context);
         }
 
-        // reset all overlays before applying
-        mThemeUtils.setOverlayEnabled(qsPanelStyleCategory, overlayThemeTarget, overlayThemeTarget);
-
-        if (qsPanelStyle > 0) {
-            mThemeUtils.setOverlayEnabled(qsPanelStyleCategory, overlayThemePackage, overlayThemeTarget);
-        }
+        mThemeUtils.setOverlayEnabled(qsPanelStyleCategory,
+                overlayThemePackage, overlayThemeTarget);
     }
 
     private void checkQSOverlays(Context context) {
@@ -313,37 +318,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         int qsPanelStyle = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_PANEL_STYLE , 0, UserHandle.USER_CURRENT);
 
-        if (isA11Style > 0) {
-            mQsUI.setEnabled(true);
-            mQsPanelStyle.setEnabled(false);
-            if (qsPanelStyle > 0) {
-                qsPanelStyle = 0;
-                Settings.System.putIntForUser(resolver,
-                        Settings.System.QS_PANEL_STYLE, 0, UserHandle.USER_CURRENT);
-                updateQsPanelStyle(context);
-            }
-        } else if (qsPanelStyle > 0) {
-            mQsPanelStyle.setEnabled(true);
-            mQsUI.setEnabled(false);
-            if (isA11Style > 0) {
-                isA11Style = 0;
-                Settings.System.putIntForUser(resolver,
-                        Settings.System.QS_TILE_UI_STYLE, 0, UserHandle.USER_CURRENT);
-                updateQsStyle(context);
-            }
-        } else {
-            mQsUI.setEnabled(true);
-            mQsPanelStyle.setEnabled(true);
-        }
-
-        // Update summaries
         int index = mQsUI.findIndexOfValue(Integer.toString(isA11Style));
+        if (index >= 0) mQsUI.setSummary(mQsUI.getEntries()[index]);
         mQsUI.setValue(Integer.toString(isA11Style));
-        mQsUI.setSummary(mQsUI.getEntries()[index]);
 
         index = mQsPanelStyle.findIndexOfValue(Integer.toString(qsPanelStyle));
+        if (index >= 0) mQsPanelStyle.setSummary(mQsPanelStyle.getEntries()[index]);
         mQsPanelStyle.setValue(Integer.toString(qsPanelStyle));
-        mQsPanelStyle.setSummary(mQsPanelStyle.getEntries()[index]);
     }
 
     @Override
@@ -351,9 +332,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         return MetricsProto.MetricsEvent.BLKI_SETTINGS;
     }
 
-    /**
-     * For search
-     */
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.blackiron_settings_quicksettings);
 }
+

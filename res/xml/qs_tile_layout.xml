@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:lineage="http://schemas.android.com/apk/res-auto"
+    android:title="@string/qs_layout_category_title">
+
+    <com.blackiron.settings.preferences.SystemSettingSwitchPreference
+        android:key="qs_tile_label_hide"
+        android:title="@string/qs_tile_label_hide_title"
+        android:summary="@string/qs_tile_label_hide_summary"
+        android:defaultValue="false"
+        lineage:position="top" />
+
+    <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+        android:key="qs_tile_label_size"
+        android:title="@string/qs_tile_label_size_title"
+        android:max="15"
+        settings:min="10"
+        settings:interval="1"
+        settings:units="sp"
+        android:defaultValue="14" />
+
+    <com.blackiron.settings.preferences.SystemSettingSwitchPreference
+        android:key="qs_tile_vertical_layout"
+        android:title="@string/qs_tile_layout_title"
+        android:summary="@string/qs_tile_layout_summary"
+        android:defaultValue="false" />
+
+<!--    <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+        android:key="fling_animation_duration"
+        android:title="@string/fling_animation_duration_title"
+        android:defaultValue="350"
+        settings:interval="50"
+        settings:units="ms"
+        android:max="1000"
+        android:min="0"
+        lineage:position="bottom" /> -->
+
+    <PreferenceCategory
+        android:key="tiles_layout"
+        android:title="@string/qs_layout_category_title">
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_columns"
+            android:title="@string/qs_columns_portrait_title"
+            android:max="5"
+            settings:min="2"
+            settings:interval="1"
+            android:defaultValue="2"
+            lineage:position="top" />
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_columns_landscape"
+            android:title="@string/qs_columns_landscape_title"
+            android:max="6"
+            settings:min="2"
+            settings:interval="1"
+            android:defaultValue="4" />
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_rows"
+            android:title="@string/qs_rows_portrait_title"
+            android:max="5"
+            settings:min="2"
+            settings:interval="1"
+            android:defaultValue="4" />
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qs_layout_rows_landscape"
+            android:title="@string/qs_rows_landscape_title"
+            android:max="3"
+            settings:min="1"
+            settings:interval="1"
+            android:defaultValue="2" />
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qqs_layout_rows"
+            android:title="@string/qqs_rows_portrait_title"
+            android:max="3"
+            settings:min="1"
+            settings:interval="1"
+            android:defaultValue="2" />
+
+        <com.blackiron.settings.preferences.SystemSettingSeekBarPreference
+            android:key="qqs_layout_rows_landscape"
+            android:title="@string/qqs_rows_landscape_title"
+            android:max="3"
+            settings:min="1"
+            settings:interval="1"
+            android:defaultValue="1"
+            lineage:position="bottom" />
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="qs_layout_columns_rows_footer"
+            android:title="@string/qs_layout_columns_rows_footer_text"
+            android:selectable="false"
+            settings:searchable="false" />
+    </PreferenceCategory>
+</PreferenceScreen>
