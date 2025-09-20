@@ -44,11 +44,11 @@
         android:summary="@string/show_clipboard_overlay_summary"
         android:defaultValue="true"/>
 
-        <Preference
+<!--        <Preference
             android:key="ongoing_progress_settings"
             android:title="@string/ongoing_progress_settings_title"
             android:summary="@string/ongoing_progress_settings_summary"
-            android:fragment="com.blakion.settings.fragments.OngoingProgressBar" />
+            android:fragment="com.blakion.settings.fragments.OngoingProgressBar" /> -->
 
     <PreferenceCategory
         android:key="heads_up"
