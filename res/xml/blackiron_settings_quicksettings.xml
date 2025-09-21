@@ -89,7 +89,6 @@
 
 <!--        <com.blackiron.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_brightness_slider_haptic"
-            android:icon="@drawable/ic_brightness"
             android:title="@string/qs_brightness_slider_haptic_title"
             android:summary="@string/qs_brightness_slider_haptic_summary"/> -->
 
