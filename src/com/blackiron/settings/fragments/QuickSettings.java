@@ -101,6 +101,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mBrightnessSliderHaptic = findPreference(KEY_BRIGHTNESS_SLIDER_HAPTIC);
         if (mBrightnessSliderHaptic != null) {
             mBrightnessSliderHaptic.setEnabled(showSlider);
+            mBrightnessSliderHaptic.setOnPreferenceChangeListener(this);
         }
 
         mQsRefactorEnabled = (SecureSettingSwitchPreference) findPreference(KEY_QS_REFACTOR_ENABLED);
@@ -151,6 +152,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             if (mBrightnessSliderPosition != null) mBrightnessSliderPosition.setEnabled(value > 0);
             if (mBrightnessSliderHaptic != null) mBrightnessSliderHaptic.setEnabled(value > 0);
             if (mShowAutoBrightness != null) mShowAutoBrightness.setEnabled(value > 0);
+            return true;
+        } else if (preference == mBrightnessSliderHaptic) {
+            int value = (boolean) newValue ? 1 : 0;
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.QS_BRIGHTNESS_SLIDER_HAPTIC, value, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mQsUI) {
             int value = Integer.parseInt((String) newValue);
